@@ -1,0 +1,233 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8" />
+    <title>3D Logo Demo</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
+            background: linear-gradient(45deg, #0a0a0a, #040000, #0a1a1a);
+            background-size: 400% 400%;
+            animation: gradientShift 15s ease infinite;
+            color: #ffffff;
+            overflow-x: hidden;
+        }
+
+        @keyframes gradientShift {
+            0% {
+                background-position: 0% 50%;
+            }
+
+            50% {
+                background-position: 100% 50%;
+            }
+
+            100% {
+                background-position: 0% 50%;
+            }
+        }
+
+        .hero {
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            position: relative;
+            flex-direction: column;
+        }
+
+        .logo-container {
+            width: 100%;
+            max-width: 500px;
+            height: 500px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            perspective: 1000px;
+            position: relative;
+        }
+
+        .logo {
+            width: 60%;
+            height: auto;
+            animation: rotate 20s linear infinite, psychedelic 6s ease-in-out infinite;
+            transform-style: preserve-3d;
+            filter: drop-shadow(0 0 20px rgba(255, 0, 100, 0.6)) drop-shadow(0 0 40px rgba(0, 255, 255, 0.4)) drop-shadow(0 0 60px rgba(255, 0, 255, 0.3));
+        }
+
+        @keyframes rotate {
+            from {
+                transform: rotateZ(0deg);
+            }
+
+            to {
+                transform: rotateZ(360deg);
+            }
+        }
+
+        @keyframes psychedelic {
+
+            0%,
+            100% {
+                filter:
+                    drop-shadow(0 0 20px rgba(255, 0, 100, 0.8)) drop-shadow(0 0 40px rgba(0, 255, 255, 0.6)) drop-shadow(0 0 60px rgba(255, 0, 255, 0.4)) hue-rotate(0deg) brightness(1.1);
+            }
+
+            25% {
+                filter:
+                    drop-shadow(0 0 30px rgba(0, 255, 200, 0.8)) drop-shadow(0 0 50px rgba(255, 100, 0, 0.6)) drop-shadow(0 0 70px rgba(100, 0, 255, 0.4)) hue-rotate(90deg) brightness(1.2);
+            }
+
+            50% {
+                filter:
+                    drop-shadow(0 0 25px rgba(255, 255, 0, 0.8)) drop-shadow(0 0 45px rgba(0, 100, 255, 0.6)) drop-shadow(0 0 65px rgba(255, 0, 150, 0.4)) hue-rotate(180deg) brightness(1.15);
+            }
+
+            75% {
+                filter:
+                    drop-shadow(0 0 35px rgba(150, 0, 255, 0.8)) drop-shadow(0 0 55px rgba(255, 200, 0, 0.6)) drop-shadow(0 0 75px rgba(0, 255, 100, 0.4)) hue-rotate(270deg) brightness(1.25);
+            }
+        }
+
+        .content {
+            text-align: center;
+            margin-top: 2rem;
+        }
+
+        h1 {
+            font-size: clamp(2rem, 5vw, 3.5rem);
+            font-weight: 700;
+            color: #ffffff;
+            margin-bottom: 1rem;
+            letter-spacing: -0.02em;
+            text-shadow: 0 0 10px rgba(255, 0, 150, 0.5),
+                0 0 20px rgba(0, 255, 255, 0.3);
+        }
+
+        p {
+            font-size: clamp(1rem, 2vw, 1.25rem);
+            color: #e0e0e0;
+            max-width: 500px;
+            margin: 0 auto;
+            margin-bottom: 2rem;
+        }
+
+        .notify-form {
+            display: flex;
+            gap: 1.5rem;
+            max-width: 400px;
+            flex-direction: column;
+            margin: 0 auto;
+            flex-wrap: wrap;
+            justify-content: center;
+        }
+
+        .notify-input {
+            flex: 1;
+            min-width: 200px;
+            padding: 0.875rem 1.25rem;
+            font-size: 1rem;
+            border: 2px solid rgba(255, 255, 255, 0.2);
+            border-radius: 50px;
+            background: rgba(255, 255, 255, 0.05);
+            color: #ffffff;
+            outline: none;
+            transition: all 0.3s ease;
+            backdrop-filter: blur(10px);
+        }
+
+        .notify-input::placeholder {
+            color: rgba(255, 255, 255, 0.5);
+        }
+
+        .notify-input:focus {
+            border-color: rgba(255, 0, 150, 0.8);
+            background: rgba(255, 255, 255, 0.1);
+            box-shadow: 0 0 20px rgba(255, 0, 150, 0.3),
+                0 0 40px rgba(0, 255, 255, 0.2);
+        }
+
+        .notify-button {
+            padding: 0.875rem 2rem;
+            font-size: 1rem;
+            font-weight: 600;
+            border: none;
+            border-radius: 50px;
+            background: linear-gradient(135deg, #ff0096, #00ffff);
+            color: #ffffff;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 15px rgba(255, 0, 150, 0.4);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .notify-button:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 6px 25px rgba(255, 0, 150, 0.6),
+                0 0 30px rgba(0, 255, 255, 0.4);
+        }
+
+        .notify-button:active {
+            transform: translateY(0);
+        }
+
+        .notify-button::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.3), transparent);
+            transition: left 0.5s;
+        }
+
+        .notify-button:hover::before {
+            left: 100%;
+        }
+
+        @media (max-width: 768px) {
+            .logo-container {
+                height: 400px;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <section class="hero">
+        <div class="logo-container">
+            <img src="./transparent-logo.png" alt="Logo" class="logo">
+        </div>
+        <div class="content">
+            <h1>Cody</h1>
+            <p>Coming soon...</p>
+            <form class="notify-form" onsubmit="handleSubmit(event)">
+                <input type="email" class="notify-input" placeholder="Enter your email" required
+                    aria-label="Email address" />
+                <button type="submit" class="notify-button">Notify Me</button>
+            </form>
+        </div>
+    </section>
+    <script>
+        function handleSubmit(event) {
+            event.preventDefault();
+            const email = event.target.querySelector('input').value;
+            // Add your email handling logic here
+            console.log('Email submitted:', email);
+            alert('Thanks! We\'ll notify you when we launch! 🚀');
+            event.target.reset();
+        }
+    </script>
+</body>
+
+</html>
