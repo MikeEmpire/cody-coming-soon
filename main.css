@@ -90,6 +90,7 @@ body {
   position: relative;
   opacity: 0;
   animation: fadeInScale 1.2s ease-out 0.3s forwards;
+  will-change: opacity, transform;
 }
 
 .logo {
@@ -100,6 +101,7 @@ body {
   filter: drop-shadow(0 0 20px rgba(255, 0, 100, 0.6))
     drop-shadow(0 0 40px rgba(0, 255, 255, 0.4))
     drop-shadow(0 0 60px rgba(255, 0, 255, 0.3));
+  will-change: transform, filter;
 }
 
 @keyframes rotate {
@@ -150,14 +152,39 @@ body {
 
 h1 {
   font-size: clamp(2rem, 5vw, 3.5rem);
-  font-weight: 500;
   font-family: "OverusedGrotesk";
+  font-weight: 700;
   color: #ffffff;
   margin-bottom: 1rem;
   letter-spacing: -0.02em;
   text-shadow: 0 0 10px rgba(255, 0, 150, 0.5), 0 0 20px rgba(0, 255, 255, 0.3);
   opacity: 0;
   animation: fadeInUp 0.8s ease-out 1.5s forwards;
+  will-change: opacity, transform;
+}
+
+p {
+  font-size: clamp(1rem, 2vw, 1.25rem);
+  color: #e0e0e0;
+  max-width: 500px;
+  margin: 0 auto;
+  margin-bottom: 2rem;
+  opacity: 0;
+  animation: fadeInUp 0.8s ease-out 1.8s forwards;
+  will-change: opacity, transform;
+}
+
+.notify-form {
+  display: flex;
+  gap: 1.5rem;
+  max-width: 400px;
+  flex-direction: column;
+  margin: 0 auto;
+  flex-wrap: wrap;
+  justify-content: center;
+  opacity: 0;
+  animation: fadeInUp 0.8s ease-out 2.1s forwards;
+  will-change: opacity, transform;
 }
 
 h4 {
@@ -177,28 +204,6 @@ h4:nth-child(2) {
 
 h4:nth-child(3) {
   top: 310px;
-}
-
-p {
-  font-size: clamp(1rem, 2vw, 1.25rem);
-  color: #e0e0e0;
-  max-width: 500px;
-  margin: 0 auto;
-  margin-bottom: 2rem;
-  opacity: 0;
-  animation: fadeInUp 0.8s ease-out 1.8s forwards;
-}
-
-.notify-form {
-  display: flex;
-  gap: 1.5rem;
-  max-width: 400px;
-  flex-direction: column;
-  margin: 0 auto;
-  flex-wrap: wrap;
-  justify-content: center;
-  opacity: 0;
-  animation: fadeInUp 0.8s ease-out 2.1s forwards;
 }
 
 .notify-input {
@@ -277,5 +282,36 @@ p {
 @media (max-width: 768px) {
   .logo-container {
     height: 400px;
+  }
+}
+
+@media (max-width: 768px) {
+  .logo-container {
+    height: 400px;
+  }
+
+  /* Simplify animations on mobile */
+  .logo {
+    animation: rotate 20s linear infinite;
+    filter: drop-shadow(0 0 15px rgba(255, 0, 100, 0.5));
+  }
+
+  @keyframes psychedelic {
+    0%,
+    100% {
+      filter: drop-shadow(0 0 15px rgba(255, 0, 100, 0.6)) brightness(1.1);
+    }
+    50% {
+      filter: drop-shadow(0 0 20px rgba(0, 255, 255, 0.6)) brightness(1.15);
+    }
+  }
+}
+
+/* Respect user's motion preferences */
+@media (prefers-reduced-motion: reduce) {
+  * {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
   }
 }
