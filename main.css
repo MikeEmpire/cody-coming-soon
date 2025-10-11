@@ -290,6 +290,7 @@ p {
   }
 
   .logo {
+    width: 70%;
     animation: rotate 20s linear infinite,
       psychedelicMobile 4s ease-in-out infinite;
   }
