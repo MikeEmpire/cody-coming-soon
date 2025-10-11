@@ -14,12 +14,14 @@
   font-style: normal;
 }
 
+/* Reset */
 * {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
 }
 
+/* Body & Background */
 body {
   font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen,
     Ubuntu, Cantarell, sans-serif;
@@ -30,14 +32,24 @@ body {
   overflow-x: hidden;
 }
 
-/* Add these keyframes at the top of your style section, after the existing animations */
+/* Keyframe Animations */
+@keyframes gradientShift {
+  0% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+  100% {
+    background-position: 0% 50%;
+  }
+}
 
 @keyframes fadeInUp {
   from {
     opacity: 0;
     transform: translateY(30px);
   }
-
   to {
     opacity: 1;
     transform: translateY(0);
@@ -49,27 +61,50 @@ body {
     opacity: 0;
     transform: scale(0.8);
   }
-
   to {
     opacity: 1;
     transform: scale(1);
   }
 }
 
-@keyframes gradientShift {
-  0% {
-    background-position: 0% 50%;
+@keyframes rotate {
+  from {
+    transform: rotateZ(0deg);
   }
-
-  50% {
-    background-position: 100% 50%;
-  }
-
-  100% {
-    background-position: 0% 50%;
+  to {
+    transform: rotateZ(360deg);
   }
 }
 
+@keyframes psychedelic {
+  0%,
+  100% {
+    filter: drop-shadow(0 0 20px rgba(255, 0, 100, 0.8))
+      drop-shadow(0 0 40px rgba(0, 255, 255, 0.6))
+      drop-shadow(0 0 60px rgba(255, 0, 255, 0.4)) hue-rotate(0deg)
+      brightness(1.1);
+  }
+  25% {
+    filter: drop-shadow(0 0 30px rgba(0, 255, 200, 0.8))
+      drop-shadow(0 0 50px rgba(255, 100, 0, 0.6))
+      drop-shadow(0 0 70px rgba(100, 0, 255, 0.4)) hue-rotate(90deg)
+      brightness(1.2);
+  }
+  50% {
+    filter: drop-shadow(0 0 25px rgba(255, 255, 0, 0.8))
+      drop-shadow(0 0 45px rgba(0, 100, 255, 0.6))
+      drop-shadow(0 0 65px rgba(255, 0, 150, 0.4)) hue-rotate(180deg)
+      brightness(1.15);
+  }
+  75% {
+    filter: drop-shadow(0 0 35px rgba(150, 0, 255, 0.8))
+      drop-shadow(0 0 55px rgba(255, 200, 0, 0.6))
+      drop-shadow(0 0 75px rgba(0, 255, 100, 0.4)) hue-rotate(270deg)
+      brightness(1.25);
+  }
+}
+
+/* Hero Section */
 .hero {
   min-height: 100vh;
   display: flex;
@@ -79,6 +114,7 @@ body {
   flex-direction: column;
 }
 
+/* Logo Container & Animation */
 .logo-container {
   width: 100%;
   max-width: 500px;
@@ -104,47 +140,7 @@ body {
   will-change: transform, filter;
 }
 
-@keyframes rotate {
-  from {
-    transform: rotateZ(0deg);
-  }
-
-  to {
-    transform: rotateZ(360deg);
-  }
-}
-
-@keyframes psychedelic {
-  0%,
-  100% {
-    filter: drop-shadow(0 0 20px rgba(255, 0, 100, 0.8))
-      drop-shadow(0 0 40px rgba(0, 255, 255, 0.6))
-      drop-shadow(0 0 60px rgba(255, 0, 255, 0.4)) hue-rotate(0deg)
-      brightness(1.1);
-  }
-
-  25% {
-    filter: drop-shadow(0 0 30px rgba(0, 255, 200, 0.8))
-      drop-shadow(0 0 50px rgba(255, 100, 0, 0.6))
-      drop-shadow(0 0 70px rgba(100, 0, 255, 0.4)) hue-rotate(90deg)
-      brightness(1.2);
-  }
-
-  50% {
-    filter: drop-shadow(0 0 25px rgba(255, 255, 0, 0.8))
-      drop-shadow(0 0 45px rgba(0, 100, 255, 0.6))
-      drop-shadow(0 0 65px rgba(255, 0, 150, 0.4)) hue-rotate(180deg)
-      brightness(1.15);
-  }
-
-  75% {
-    filter: drop-shadow(0 0 35px rgba(150, 0, 255, 0.8))
-      drop-shadow(0 0 55px rgba(255, 200, 0, 0.6))
-      drop-shadow(0 0 75px rgba(0, 255, 100, 0.4)) hue-rotate(270deg)
-      brightness(1.25);
-  }
-}
-
+/* Content Section */
 .content {
   text-align: center;
   margin-top: 2rem;
@@ -152,7 +148,7 @@ body {
 
 h1 {
   font-size: clamp(2rem, 5vw, 3.5rem);
-  font-family: "OverusedGrotesk";
+  font-family: "OverusedGrotesk", sans-serif;
   font-weight: 700;
   color: #ffffff;
   margin-bottom: 1rem;
@@ -163,32 +159,8 @@ h1 {
   will-change: opacity, transform;
 }
 
-p {
-  font-size: clamp(1rem, 2vw, 1.25rem);
-  color: #e0e0e0;
-  max-width: 500px;
-  margin: 0 auto;
-  margin-bottom: 2rem;
-  opacity: 0;
-  animation: fadeInUp 0.8s ease-out 1.8s forwards;
-  will-change: opacity, transform;
-}
-
-.notify-form {
-  display: flex;
-  gap: 1.5rem;
-  max-width: 400px;
-  flex-direction: column;
-  margin: 0 auto;
-  flex-wrap: wrap;
-  justify-content: center;
-  opacity: 0;
-  animation: fadeInUp 0.8s ease-out 2.1s forwards;
-  will-change: opacity, transform;
-}
-
 h4 {
-  font-family: "OverusedGrotesk";
+  font-family: "OverusedGrotesk", sans-serif;
   font-weight: 400;
   position: absolute;
   top: 120px;
@@ -204,6 +176,29 @@ h4:nth-child(2) {
 
 h4:nth-child(3) {
   top: 310px;
+}
+
+p {
+  font-size: clamp(1rem, 2vw, 1.25rem);
+  color: #e0e0e0;
+  max-width: 500px;
+  margin: 0 auto;
+  margin-bottom: 2rem;
+  opacity: 0;
+  animation: fadeInUp 0.8s ease-out 1.8s forwards;
+  will-change: opacity, transform;
+}
+
+/* Notify Form */
+.notify-form {
+  display: flex;
+  gap: 1.5rem;
+  max-width: 400px;
+  flex-direction: column;
+  margin: 0 auto;
+  opacity: 0;
+  animation: fadeInUp 0.8s ease-out 2.1s forwards;
+  will-change: opacity, transform;
 }
 
 .notify-input {
@@ -279,24 +274,19 @@ h4:nth-child(3) {
   left: 100%;
 }
 
-@media (max-width: 768px) {
-  .logo-container {
-    height: 400px;
-  }
-}
-
+/* Mobile Optimizations */
 @media (max-width: 768px) {
   .logo-container {
     height: 400px;
   }
 
-  /* Simplify animations on mobile */
   .logo {
-    animation: rotate 20s linear infinite;
+    animation: rotate 20s linear infinite,
+      psychedelicMobile 6s ease-in-out infinite;
     filter: drop-shadow(0 0 15px rgba(255, 0, 100, 0.5));
   }
 
-  @keyframes psychedelic {
+  @keyframes psychedelicMobile {
     0%,
     100% {
       filter: drop-shadow(0 0 15px rgba(255, 0, 100, 0.6)) brightness(1.1);
@@ -307,7 +297,7 @@ h4:nth-child(3) {
   }
 }
 
-/* Respect user's motion preferences */
+/* Accessibility - Reduced Motion */
 @media (prefers-reduced-motion: reduce) {
   * {
     animation-duration: 0.01ms !important;
