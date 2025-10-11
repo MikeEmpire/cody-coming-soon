@@ -276,6 +276,15 @@ p {
 
 /* Mobile Optimizations */
 @media (max-width: 768px) {
+  h4 {
+    top: 110px;
+  }
+  h4:nth-child(2) {
+    top: 210px;
+  }
+  h4:nth-child(3) {
+    top: 300px;
+  }
   .logo-container {
     height: 400px;
   }
