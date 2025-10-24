@@ -9,19 +9,19 @@
 </head>
 
 <body>
-    <section class="hero">
-        <div class="logo-container">
-            <img src="./images/transparent-logo.png" alt="Logo" class="logo">
-        </div>
-        <div class="content">
-            <img src="./images/cody-logo.png" alt="Cody coming soon" class="cody-img">
+    <div class="hero">
+        <section class="logo-container">
+            <img src="./images/c-charmmm-clear.png" alt="Logo" class="logo">
+        </section>
+        <section class="content">
             <form class="notify-form" onsubmit="handleSubmit(event)">
                 <input type="email" class="notify-input" placeholder="Enter your email" required
                     aria-label="Email address" />
                 <button type="submit" class="notify-button">Notify Me</button>
             </form>
-        </div>
-    </section>
+            <img src="./images/cody-logo.png" alt="Cody coming soon" class="cody-img">
+        </section>
+    </div>
     <script>
         function handleSubmit(event) {
             event.preventDefault();
@@ -30,6 +30,7 @@
             console.log('Email submitted:', email);
             alert('Thanks! We\'ll notify you when we launch! 🚀');
             event.target.reset();
+            me
         }
     </script>
 </body>
